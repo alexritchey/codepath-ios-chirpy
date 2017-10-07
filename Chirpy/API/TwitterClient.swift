@@ -52,11 +52,31 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func mentionsTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/statuses/mentions_timeline.json", parameters: nil, success: { (task: URLSessionDataTask!, response: Any?) in
+            let dictionaries = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+            success(tweets)
+        }, failure: { (task: URLSessionDataTask!, error: Error!) in
+            failure(error)
+        })
+    }
+    
     func profileTimeline(with twitterHandle: String!, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/statuses/user_timeline.json", parameters: ["screen_name": twitterHandle], success: { (task: URLSessionDataTask!, response: Any?) in
             let dictionaries = response as! [NSDictionary]
             let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
             success(tweets)
+        }, failure: { (task: URLSessionDataTask!, error: Error!) in
+            failure(error)
+        })
+    }
+    
+    func userInfo(with twitterHandle: String!, success: @escaping (Profile) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/users/show.json", parameters: ["screen_name": twitterHandle], success: { (task: URLSessionDataTask!, response: Any?) in
+            let dictionary = response as! NSDictionary
+            let profileDetails = Profile(dictionary: dictionary)
+            success(profileDetails)
         }, failure: { (task: URLSessionDataTask!, error: Error!) in
             failure(error)
         })

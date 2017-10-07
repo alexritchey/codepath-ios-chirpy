@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol TweetsTableViewCellDelegate {
+    @objc optional func tweetCell(tweetCell: TweetsTableViewCell, handleProfileRedirect handle: String)
+}
+
 class TweetsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatar: UIImageView!
@@ -18,6 +22,8 @@ class TweetsTableViewCell: UITableViewCell {
     @IBOutlet weak var replyIcon: UIImageView!
     @IBOutlet weak var retweetIcon: UIImageView!
     @IBOutlet weak var favoriteIcon: UIImageView!
+    
+    weak var delegate: TweetsTableViewCellDelegate?
     
     var tweet: Tweet! {
         didSet {
@@ -47,7 +53,8 @@ class TweetsTableViewCell: UITableViewCell {
     }
     
     @objc func onTapAvatar() {
-        print("hi")
+        print("Tapped avatar")
+        delegate?.tweetCell!(tweetCell: self, handleProfileRedirect: tweet.handle!)
     }
 
 }

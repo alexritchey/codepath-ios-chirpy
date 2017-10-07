@@ -18,7 +18,6 @@ class HamburgerViewController: UIViewController {
     var initialLeftMargin: CGFloat!
     
     var tweetsNavigationController: UINavigationController!
-    var profileNavigationController: UINavigationController!
     
     var contentViewController: UINavigationController! {
         didSet {
@@ -45,7 +44,6 @@ class HamburgerViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         tweetsNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
-        profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController") as! UINavigationController
 
         contentViewController = tweetsNavigationController
         menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController

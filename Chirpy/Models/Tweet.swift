@@ -31,7 +31,7 @@ class Tweet: NSObject {
         }
         
         if let avatarURLString = userDict?["profile_image_url"] as? String {
-            avatarUrl = URL(string: avatarURLString)!
+            avatarUrl = URL(string: avatarURLString.replacingOccurrences(of: "_normal", with: ""))!
         }
         
         if let timestampString = dictionary["created_at"] as? String {

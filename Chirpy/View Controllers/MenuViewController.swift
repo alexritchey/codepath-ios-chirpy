@@ -43,14 +43,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         switch indexPath.row {
             case 0:
-                let profileViewController = hamburgerViewController.profileNavigationController.topViewController as! ProfileViewController
+                let profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController") as! UINavigationController
+                let profileViewController = profileNavigationController.topViewController as! ProfileViewController
                 profileViewController.handleName = "crystallinedex"
                 
-                hamburgerViewController.contentViewController = hamburgerViewController.profileNavigationController
+                hamburgerViewController.contentViewController = profileNavigationController
             case 1:
                 hamburgerViewController.contentViewController = hamburgerViewController.tweetsNavigationController
+            case 2:
+                hamburgerViewController.contentViewController = storyboard.instantiateViewController(withIdentifier: "MentionsNavigationController") as! UINavigationController
             default:
                 return
         }

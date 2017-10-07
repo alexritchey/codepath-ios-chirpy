@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, TweetsTableViewCellDelegate {
     
     var tweetList: [Tweet] = []
     var tapGesture: UITapGestureRecognizer!
@@ -67,8 +67,17 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetsTableViewCell
         
         cell.tweet = tweetList[indexPath.row]
+        cell.delegate = self
         
         return cell
+    }
+    
+    func tweetCell(tweetCell: TweetsTableViewCell, handleProfileRedirect handle: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        profileViewController.handleName = handle
+        self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
