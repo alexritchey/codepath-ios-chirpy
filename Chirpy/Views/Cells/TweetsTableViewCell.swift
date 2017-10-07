@@ -28,6 +28,10 @@ class TweetsTableViewCell: UITableViewCell {
             fullName.text = tweet.name
             tweetContent.text = tweet.text
             handle.text = tweet.handle
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTapAvatar))
+            avatar.isUserInteractionEnabled = true
+            avatar.addGestureRecognizer(tapGesture)
         }
     }
     
@@ -40,6 +44,10 @@ class TweetsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @objc func onTapAvatar() {
+        print("hi")
     }
 
 }

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     var tweetList: [Tweet] = []
+    var tapGesture: UITapGestureRecognizer!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,20 +28,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         refreshControl.addTarget(self, action: #selector(refreshTweets(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
-        
-        let client = TwitterClient.sharedInstance
-        client.homeTimeline(success: { (tweets: [Tweet]) in
-            self.tweetList = tweets
-            self.tableView.reloadData()
-        }, failure: { (error: Error) in
-            print(error)
-        })
-        
-        client.currentAccount(success: { (user: User) in
-            
-        }) { (error: Error) in
-            print(error.localizedDescription)
-        }
     }
     
     // Segue to Details
@@ -55,13 +42,20 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    @objc func refreshTweets(_ refreshControl: UIRefreshControl) {
+    func getTweets(success: @escaping () -> ()) {
+        // Pulls home timeline by default
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweetList = tweets
             self.tableView.reloadData()
-            refreshControl.endRefreshing()
+            success()
         }) { (error: Error) in
             print(error.localizedDescription)
+        }
+    }
+    
+    @objc func refreshTweets(_ refreshControl: UIRefreshControl) {
+        getTweets {
+            refreshControl.endRefreshing()
         }
     }
     
@@ -85,6 +79,5 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func onTapLogout(_ sender: Any) {
         TwitterClient.sharedInstance.logout()
     }
-    
 }
 
