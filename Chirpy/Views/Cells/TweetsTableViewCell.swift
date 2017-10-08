@@ -19,9 +19,9 @@ class TweetsTableViewCell: UITableViewCell {
     @IBOutlet weak var handle: UILabel!
     @IBOutlet weak var timeSince: UILabel!
     @IBOutlet weak var tweetContent: UILabel!
-    @IBOutlet weak var replyIcon: UIImageView!
-    @IBOutlet weak var retweetIcon: UIImageView!
     @IBOutlet weak var favoriteIcon: UIImageView!
+    @IBOutlet weak var retweetIcon: UIImageView!
+    @IBOutlet weak var replyIcon: UIImageView!
     
     weak var delegate: TweetsTableViewCellDelegate?
     

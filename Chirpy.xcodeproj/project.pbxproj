@@ -14,6 +14,7 @@
 		C8084DFC1F79D58F0019F24D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8084DFB1F79D58F0019F24D /* DetailsViewController.swift */; };
 		C81E34041F8973B100A42A05 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E34031F8973B100A42A05 /* Profile.swift */; };
 		C81E34061F898B7E00A42A05 /* MentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E34051F898B7E00A42A05 /* MentionsViewController.swift */; };
+		C81E340A1F89969E00A42A05 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81E34081F89969E00A42A05 /* TweetCell.xib */; };
 		C832CF7D1F8829060061E6F7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C832CF7C1F8829060061E6F7 /* HomeViewController.swift */; };
 		C832CF7F1F88291E0061E6F7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C832CF7E1F88291E0061E6F7 /* ProfileViewController.swift */; };
 		C83821EC1F89625900F690E5 /* ProfileHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C83821EB1F89625900F690E5 /* ProfileHeader.xib */; };
@@ -40,6 +41,7 @@
 		C8084DFB1F79D58F0019F24D /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		C81E34031F8973B100A42A05 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		C81E34051F898B7E00A42A05 /* MentionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentionsViewController.swift; sourceTree = "<group>"; };
+		C81E34081F89969E00A42A05 /* TweetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		C832CF7C1F8829060061E6F7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C832CF7E1F88291E0061E6F7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C83821EB1F89625900F690E5 /* ProfileHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeader.xib; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				C80401271F84621B009D11A8 /* MenuCell.swift */,
 				C8084DF91F79D3BD0019F24D /* TweetsTableViewCell.swift */,
+				C81E34081F89969E00A42A05 /* TweetCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C83821EC1F89625900F690E5 /* ProfileHeader.xib in Resources */,
+				C81E340A1F89969E00A42A05 /* TweetCell.xib in Resources */,
 				C83FD7901F79CB69006EF458 /* LaunchScreen.storyboard in Resources */,
 				C83FD78D1F79CB69006EF458 /* Assets.xcassets in Resources */,
 				C83FD78B1F79CB69006EF458 /* Main.storyboard in Resources */,
