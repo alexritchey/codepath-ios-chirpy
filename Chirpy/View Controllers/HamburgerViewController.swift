@@ -65,7 +65,9 @@ class HamburgerViewController: UIViewController {
             initialLeftMargin = leftMarginConstraint.constant
         }
         else if sender.state == UIGestureRecognizerState.changed {
-            leftMarginConstraint.constant = initialLeftMargin + translation.x
+            if translation.x > 0 {
+                leftMarginConstraint.constant = initialLeftMargin + translation.x
+            }
         }
         else if sender.state == UIGestureRecognizerState.ended {
             UIView.animate(withDuration: 0.3, animations: {
