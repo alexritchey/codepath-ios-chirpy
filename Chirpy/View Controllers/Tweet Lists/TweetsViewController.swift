@@ -34,18 +34,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.insertSubview(refreshControl, at: 0)
     }
     
-    // Segue to Details
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? DetailsViewController {
-            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
-            let tweet = tweetList[indexPath.row]
-            
-            vc.tweet = tweet
-        } else if let vc = segue.destination as? ComposeTweetViewController {
-            
-        }
-    }
-    
     func getTweets(success: @escaping () -> ()) {
         // Pulls home timeline by default
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
@@ -61,6 +49,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         getTweets {
             refreshControl.endRefreshing()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        detailsViewController.tweet = tweetList[indexPath.row]
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

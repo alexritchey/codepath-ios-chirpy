@@ -344,7 +344,7 @@
         <!--Details View Controller-->
         <scene sceneID="Zyv-lC-IbW">
             <objects>
-                <viewController id="CaG-2s-2HO" customClass="DetailsViewController" customModule="Chirpy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="CaG-2s-2HO" customClass="DetailsViewController" customModule="Chirpy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yGC-Ac-AFJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
