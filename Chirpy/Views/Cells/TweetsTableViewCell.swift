@@ -30,6 +30,7 @@ class TweetsTableViewCell: UITableViewCell {
         didSet {
             if let avatarUrl = tweet.avatarUrl {
                 avatar.setImageWith(avatarUrl)
+                avatar = Helpers.makeImageCircular(with: avatar)
             }
             
             fullName.text = tweet.name

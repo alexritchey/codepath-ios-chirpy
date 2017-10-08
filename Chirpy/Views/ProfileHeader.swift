@@ -24,7 +24,12 @@ class ProfileHeader: UITableViewHeaderFooterView {
             followersNumber.text = profileData?.followersNumber
             tweetsNumber.text = profileData?.tweetsNumber
             followingNumber.text = profileData?.followingNumber
+            
             avatar.setImageWith((profileData?.avatarUrl)!)
+            avatar = Helpers.makeImageCircular(with: avatar)
+            avatar.layer.borderWidth = 4.0
+            avatar.layer.borderColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0).cgColor
+            
             bannerImage.setImageWith((profileData?.bannerUrl)!)
             handle.text = profileData?.handle
         }

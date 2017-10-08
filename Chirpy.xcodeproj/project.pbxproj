@@ -26,6 +26,7 @@
 		C83FD7901F79CB69006EF458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83FD78E1F79CB69006EF458 /* LaunchScreen.storyboard */; };
 		C86458761F845FB3009284D8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86458751F845FB3009284D8 /* MenuViewController.swift */; };
 		C8A68B391F7DEBF9008C055D /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A68B381F7DEBF9008C055D /* ComposeTweetViewController.swift */; };
+		C8A8BD241F8AE31C00C2CFEC /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8BD231F8AE31C00C2CFEC /* Helpers.swift */; };
 		C8B3740C1F7B0B8D00D71B03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B3740B1F7B0B8D00D71B03 /* LoginViewController.swift */; };
 		C8E9AA521F7C6F81007CCC1D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E9AA511F7C6F81007CCC1D /* User.swift */; };
 		C8E9AA551F7C6F98007CCC1D /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E9AA541F7C6F98007CCC1D /* Tweet.swift */; };
@@ -55,6 +56,7 @@
 		C83FD7911F79CB69006EF458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C86458751F845FB3009284D8 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C8A68B381F7DEBF9008C055D /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
+		C8A8BD231F8AE31C00C2CFEC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		C8B3740B1F7B0B8D00D71B03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C8E9AA511F7C6F81007CCC1D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C8E9AA541F7C6F98007CCC1D /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				C83FD78C1F79CB69006EF458 /* Assets.xcassets */,
 				C83FD78E1F79CB69006EF458 /* LaunchScreen.storyboard */,
 				C83FD7911F79CB69006EF458 /* Info.plist */,
+				C8A8BD231F8AE31C00C2CFEC /* Helpers.swift */,
 			);
 			path = Chirpy;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				C81E34041F8973B100A42A05 /* Profile.swift in Sources */,
 				C8E9AA551F7C6F98007CCC1D /* Tweet.swift in Sources */,
 				C83FD7861F79CB69006EF458 /* AppDelegate.swift in Sources */,
+				C8A8BD241F8AE31C00C2CFEC /* Helpers.swift in Sources */,
 				C8B3740C1F7B0B8D00D71B03 /* LoginViewController.swift in Sources */,
 				C832CF7F1F88291E0061E6F7 /* ProfileViewController.swift in Sources */,
 				C80401261F846140009D11A8 /* HamburgerViewController.swift in Sources */,
