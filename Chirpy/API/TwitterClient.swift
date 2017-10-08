@@ -82,6 +82,28 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func favoriteTweet(with id: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        post("/1.1/favorites/create.json",
+             parameters: ["id": id],
+             progress: nil,
+             success: { (task, response) in
+                success()
+        }, failure: { (task, error) in
+            failure(error)
+        })
+    }
+    
+    func unfavoriteTweet(with id: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        post("/1.1/favorites/destroy.json",
+             parameters: ["id": id],
+             progress: nil,
+             success: { (task, response) in
+                success()
+        }, failure: { (task, error) in
+            failure(error)
+        })
+    }
+    
     func composeTweet(with tweetContent: String, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
         post("/1.1/statuses/update.json",
              parameters: ["status": tweetContent],

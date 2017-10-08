@@ -17,6 +17,8 @@ class Tweet: NSObject {
     var name: String?
     var avatarUrl: URL?
     var handle: String?
+    var id: Int?
+    var isFavorited: Bool?
 
     init(dictionary: NSDictionary) {
         let userDict = dictionary["user"] as? NSDictionary
@@ -25,6 +27,8 @@ class Tweet: NSObject {
         favoriteCount = (dictionary["favourite_count"] as? Int) ?? 0
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         name = userDict?["name"] as? String
+        id = dictionary["id"] as? Int
+        isFavorited = dictionary["favorited"] as? Bool
         
         if let formattedHandle = userDict?["screen_name"] as? String {
             handle = "@\(formattedHandle)"

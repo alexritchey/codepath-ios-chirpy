@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol TweetsTableViewCellDelegate {
     @objc optional func tweetCell(tweetCell: TweetsTableViewCell, handleProfileRedirect handle: String)
+    @objc optional func tweetCell(tweetCell: TweetsTableViewCell, handleFavorite id: Int)
 }
 
 class TweetsTableViewCell: UITableViewCell {
@@ -35,9 +36,22 @@ class TweetsTableViewCell: UITableViewCell {
             tweetContent.text = tweet.text
             handle.text = tweet.handle
             
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTapAvatar))
+            if let favoriteState = tweet.isFavorited {
+                if favoriteState == true {
+                    favoriteIcon.image = #imageLiteral(resourceName: "favorited")
+                }
+                else {
+                    favoriteIcon.image = #imageLiteral(resourceName: "favorite")
+                }
+            }
+            
+            let tapAvatarGesture = UITapGestureRecognizer(target: self, action: #selector(onTapAvatar))
             avatar.isUserInteractionEnabled = true
-            avatar.addGestureRecognizer(tapGesture)
+            avatar.addGestureRecognizer(tapAvatarGesture)
+            
+            let tapFavoriteGesture = UITapGestureRecognizer(target: self, action: #selector(onTapFavorite))
+            favoriteIcon.isUserInteractionEnabled = true
+            favoriteIcon.addGestureRecognizer(tapFavoriteGesture)
         }
     }
     
@@ -53,8 +67,11 @@ class TweetsTableViewCell: UITableViewCell {
     }
     
     @objc func onTapAvatar() {
-        print("Tapped avatar")
         delegate?.tweetCell!(tweetCell: self, handleProfileRedirect: tweet.handle!)
+    }
+    
+    @objc func onTapFavorite() {
+        delegate?.tweetCell!(tweetCell: self, handleFavorite: tweet.id!)
     }
 
 }

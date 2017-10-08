@@ -77,7 +77,40 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         profileViewController.handleName = handle
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+        
+        if let navigationController = self.navigationController {
+            navigationController.show(profileViewController, sender: nil)
+        }
+    }
+    
+    func tweetCell(tweetCell: TweetsTableViewCell, handleFavorite id: Int) {
+        let tweet = tweetCell.tweet
+        let client = TwitterClient.sharedInstance
+        let indexPath = tableView.indexPath(for: tweetCell)!
+        
+        if !(tweet?.isFavorited)! {
+            client.favoriteTweet(with: id, success: {
+                tweetCell.favoriteIcon.image = #imageLiteral(resourceName: "favorited")
+                let tweet = self.tweetList[indexPath.row]
+                tweet.isFavorited = true
+                print("Favorited")
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        } else {
+            client.unfavoriteTweet(with: id, success: {
+                tweetCell.favoriteIcon.image = #imageLiteral(resourceName: "favorite")
+                let tweet = self.tweetList[indexPath.row]
+                tweet.isFavorited = false
+                print("Unfavorited")
+            }, failure: { (error) in
+                print(error.localizedDescription)
+            })
+        }
+        
+        // Reload Cell
+        tableView.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
