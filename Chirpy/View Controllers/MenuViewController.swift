@@ -12,7 +12,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     
-    let menuOptions = ["Profile", "Timeline", "Mentions", "Account"]
+    let menuOptions = ["Profile", "Timeline", "Mentions"]
     
     var hamburgerViewController: HamburgerViewController!
 
