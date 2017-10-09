@@ -56,7 +56,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         detailsViewController.tweet = tweetList[indexPath.row]
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        show(detailsViewController, sender: self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,12 +75,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tweetCell(tweetCell: TweetsTableViewCell, handleProfileRedirect handle: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "SingleProfileViewController") as! ProfileViewController
         profileViewController.handleName = handle
-        
-        if let navigationController = self.navigationController {
-            navigationController.show(profileViewController, sender: nil)
-        }
+        show(profileViewController, sender: nil)
     }
     
     func tweetCell(tweetCell: TweetsTableViewCell, handleFavorite id: Int) {
